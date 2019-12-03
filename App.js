@@ -11,6 +11,11 @@ const app = express()
 const zad1 = require('./endpoints/zad1')
 const zad2 = require('./endpoints/zad2')
 const zad3 = require('./endpoints/zad3')
+const zad4 = require('./endpoints/zad4')
+
+app.use("/strona", express.static(__dirname + '/strona'))
+
+app.get("/search", zad4.searchStaff)
 
 app.get("/:rev", zad1.stringRev)
 

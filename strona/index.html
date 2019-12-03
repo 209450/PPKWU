@@ -1,0 +1,31 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width">
+</head>
+
+<body>
+    <div id="main-container" class="container round-border">
+        <div id="form-container" class="container round-border">
+            <form method="GET">
+                <h1>Wyszukaj Pracownika</h1>
+                <hr>
+                <label for="search">Dane Pracownika</label>
+                <input id="search-name-input" name="search" type="text" required>
+                <hr>
+                <input id="submit-search-button" type="submit" value="Szukaj">
+            </form>
+        </div>
+        <div class="container round-border">
+            <h3 id="number-results"></h3>
+            <div id="search-results">
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
