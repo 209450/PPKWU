@@ -44,7 +44,7 @@ generateICS = async (req, res) => {
 
 async function htmlDOMfromURL(url) {
     let htmlres
-    await fetch(url)
+    await fetch(encodeURI(url))
         .then((res) => res.text())
         .then((html) => htmlres = html)
         .catch((err) => console.log(err))
@@ -67,4 +67,4 @@ function ICSEvent(title, year, month, day) {
     return { title: title, start: [year, month, day], end: [year, month, day] }
 }
 
-module.exports = {generateICS}
+module.exports = { generateICS, htmlDOMfromURL }

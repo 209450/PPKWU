@@ -10,22 +10,23 @@
 <body>
     <div id="main-container" class="container round-border">
         <div id="form-container" class="container round-border">
-            <form method="GET">
+            <form action="/strona/" method="GET">
                 <h1>Wyszukaj Pracownika</h1>
                 <hr>
-                <label for="search">Dane Pracownika</label>
-                <input id="search-name-input" name="search" type="text" required>
+                <label for="name">Dane Pracownika</label>
+                <input id="search-name-input" name="name" type="text" required>
                 <hr>
-                <input id="submit-search-button" type="submit" value="Szukaj">
+                <input id="submit-search-button" class="submit-button" type="submit" value="Szukaj">
             </form>
         </div>
         <div class="container round-border">
             <h3 id="number-results"></h3>
-            <div id="search-results">
+            <div id="search-results" class="container">
+                <table id="table-results">
 
+                </table>
             </div>
         </div>
-    </div>
 </body>
 
 </html>
