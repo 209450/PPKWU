@@ -63,3 +63,8 @@ body{
     text-align: left;
     padding: 8px;
   }
+
+.vCard-button{
+    font-size: 4vw;
+    width: 100%;
+}

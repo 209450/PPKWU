@@ -1,3 +1,6 @@
+var vCardsJS = require('vcards-js');
+ 
+var vCard = vCardsJS();
 
 generateVCard = (req, res) =>{
     console.log(req.body)

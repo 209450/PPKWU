@@ -2,6 +2,8 @@ const urlSearch = 'http://localhost:3004/search/'
 const urlVCard = 'http://localhost:3004/vCard'
 const mock = 'https://8927bd71-c3b2-4b04-acdf-e4fe6a5d67e3.mock.pstmn.io/staff/'
 
+let staff
+
 window.onload = async () => {
 
     const urlParams = new URLSearchParams(window.location.search);
@@ -12,7 +14,9 @@ window.onload = async () => {
 
     await getJSON(url).then(thenUpdateLabel)
         .then(thenGenerateTableStaffTable)
-        .then(thenAvaibleVCardGenerationButton)
+        .then((staffJson) => staff = staffJson)
+
+
 
     document.getElementById("submit-search-button").onclick = () => {
         console.log("aaa")
@@ -54,19 +58,16 @@ const thenGenerateTableStaffTable = async (staffJsonTable) => {
             newData.innerHTML = staffJson[key]
             newRow.appendChild(newData)
         }
+        const newData = document.createElement("td")
+        const vCardButton = document.createElement("button")
+        vCardButton.innerHTML = 'vCard'
+        vCardButton.className = 'vCard-button'
+        vCardButton.index = staffJsonTable.indexOf(staffJson)
+        vCardButton.onclick = (event) => console.log(event.target.index)
+        newData.appendChild(vCardButton)
+        newRow.appendChild(newData)
         table.appendChild(newRow)
     }
-
-    return staffJsonTable
-}
-
-const thenAvaibleVCardGenerationButton = (staffJsonTable) => {
-    const container = document.getElementById("search-results")
-    const button = document.createElement("button")
-    button.className = 'submit-button'
-    button.innerHTML = 'Ściągnij vCard'
-    button.onclick = (event) => generateVCard()
-    container.appendChild(button)
 
     return staffJsonTable
 }
