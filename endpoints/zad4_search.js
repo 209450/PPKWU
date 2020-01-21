@@ -13,9 +13,12 @@ searchStaff = async (req, res) => {
     let resultJson = []
     for (let info of userInfo) {
         const name = info.querySelector('h3 a').innerHTML
+        const nameSplited = name.split(" ")
+        const firstName = nameSplited[0]
+        const lastName = nameSplited[1]
         const title = info.querySelector('h4').innerHTML
         const affiliation = info.querySelector('span.item-content').innerHTML
-        resultJson.push({name, title, affiliation})
+        resultJson.push({firstName, lastName, title, affiliation})
     }
 
     res.json(resultJson)
@@ -34,5 +37,7 @@ function tryMakeUrlQuery(url, params) {
 function replaceSpacesWithPluses(string) {
     return string.replace(/\s/g, '+')
 }
+
+
 
 module.exports = { searchStaff }

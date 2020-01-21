@@ -52,11 +52,11 @@ body{
 }
 
 #table-results{
-    width:100%;
+    width: 100%;
     text-align: left;
-    font-size: 3vw;
+    font-size: 2vw;
+    table-layout: fixed;
 }
-
 
 #table-results td, th {
     border: 1px solid #dddddd;
@@ -65,6 +65,6 @@ body{
   }
 
 .vCard-button{
-    font-size: 4vw;
+    font-size: 3vw;
     width: 100%;
 }

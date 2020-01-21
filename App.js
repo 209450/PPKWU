@@ -20,14 +20,15 @@ app.use("/strona", express.static(__dirname + '/strona'))
 
 app.get("/search/:name", zad4Search.searchStaff)
 
+app.use("/vcards", express.static(__dirname +'/endpoints/vcards'))
 app.post("/vCard",zad4vCard.generateVCard)
-
-app.get("/:rev", zad1.stringRev)
+app.get("/vCard",)
 
 app.get("/checkletters/:str", zad2.parseString)
 
 app.get("/download/ics/:year/:month", zad3.generateICS)
 
+app.get("/:rev", zad1.stringRev)
 
 app.listen(port, () => {
     console.log(`Endpoint na porcie:${port}`);
