@@ -55,3 +55,69 @@ DTSTART;VALUE=DATE:20191115
 END:VEVENT
 END:VCALENDAR
 ```
+
+### zad4
+
+Endpoint "/strona" otwiera stronę, która umożliwia wyszukiwanie pracowników ze strony [WEEIA](http://www.weeia.p.lodz.pl/) i generowanie wizytówek vCard. (maksymalnie do 20 wyników wyszukiwania).
+
+
+#### pobieranie listy pracowników
+
+Endpoint "/search/:name", gdzie "name" jest paremetrem typu String, wyszuka pracowników na [WEEIA](http://www.weeia.p.lodz.pl/), w przypadku wyszukania pracownika zwracana jest tablica JSON:
+```
+[
+  {
+    firstName: <<String>>,
+    lastName: <<String>>,
+    title: <<String>>,
+    affiliation: <<String>>
+  }
+]
+```
+Przykład użycia: "/search/Pawe%C5%82+Kapusta", zwróci
+
+```
+[
+  {
+    "firstName":"Paweł",
+    "lastName":"Kapusta",
+    "title":"dr inż. ",
+    "affiliation":"I24 - Instytut Informatyki Stosowanej"
+    }
+]
+```
+
+#### generowanie vCard
+
+Endpoint "/vCard" przyjmuję dane w formacie JSON, wysłane motodą POST
+```
+{
+  firstName: <<String>>,
+  lastName: <<String>>,
+  title: <<String>>,
+  organization: <<String>>
+}
+```
+Zwraca nazwę pliku w formacie json, który można pobrać na pod adresem "/vcards".
+```
+{
+  fileName: <<String>>
+}
+```
+W przypadku wystopienia błędu zwarcany jest kod 400 oraz wiadomość tekstowa - "vCard file generation error!".
+
+Przykład użycia
+```
+{
+  firstName: "Paweł",
+  lastName: "Kapusta",
+  title: "dr inż. ",
+  organization: "I24 - Instytut Informatyki Stosowanej"
+}
+```
+Zwróci
+```
+{
+  fileName: Paweł_Kapusta_1579571837575.vcf
+}
+```
