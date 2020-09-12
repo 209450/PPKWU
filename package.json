@@ -13,7 +13,7 @@
     "express-async-await": "^1.1.0",
     "ics": "^2.18.0",
     "jsdom": "^15.2.1",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "npm": "^6.13.6",
     "vcards-js": "^2.10.0"
   }
